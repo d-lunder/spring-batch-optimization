@@ -23,8 +23,8 @@ WHILE i <= total_records LOOP
 INSERT INTO transactions (id, transaction_date, amount, created_at)
 SELECT
 i + row_number() OVER () AS id,
-start_date + (random() * 1460)::int AS transaction_date, -- Random date within 4 years
-CAST(random() * 1000 AS NUMERIC(10,2)) AS amount, -- Fix for ROUND()
+start_date + (random() * 1460)::int AS transaction_date,
+CAST(random() * 1000 AS NUMERIC(10,2)) AS amount,
 now() AS created_at
 FROM generate_series(1, batch_size);
 i := i + batch_size;
