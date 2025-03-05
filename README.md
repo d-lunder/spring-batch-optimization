@@ -1,5 +1,5 @@
 Script for creating table that will hold dummy transactions
-SQL Start
+```sql
 create table transactions
 (
 id                      integer      not null,
@@ -8,10 +8,10 @@ amount                  numeric      not null,
 created_at              date,
 constraint pk_transactions primary key(id)
 );
-SQL End
+```
 
 Script for creating 100mil of dummy transactions
-SQL Start
+```sql
 DO $$
 DECLARE
 i INT := 1;
@@ -31,5 +31,5 @@ i := i + batch_size;
 RAISE NOTICE 'Inserted % records', i;
 END LOOP;
 END $$;
-SQL End
+```
 
