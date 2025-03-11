@@ -1,5 +1,4 @@
 Script for creating table that will hold dummy transactions
-
 ```sql
 create table transactions
 (
@@ -11,14 +10,13 @@ constraint pk_transactions primary key(id)
 );
 ```
 
-Script for creating 100mil of dummy transactions
-
+Script for creating 1 million of dummy transactions
 ```sql
 DO $$
 DECLARE
 i INT := 1;
-batch_size INT := 1000000; -- 1 million per batch
-total_records INT := 100000000; -- 100 million
+batch_size INT := 10000; -- 10 000
+total_records INT := 1000000; -- 1 000 000
 start_date DATE := '2020-01-01';
 BEGIN
 WHILE i <= total_records LOOP
@@ -30,8 +28,22 @@ CAST(random() * 1000 AS NUMERIC(10,2)) AS amount,
 now() AS created_at
 FROM generate_series(1, batch_size);
 i := i + batch_size;
-RAISE NOTICE 'Inserted % records', i;
+RAISE NOTICE 'Inserted % records', i-1;
 END LOOP;
 END $$;
 ```
 
+Chunk
+Job completed: transactionJob
+Total items processed: 1000000
+Duration: ~30 min
+Average processing rate: ~540 records/second
+Average heap usage: ~24 MB
+
+Multithreaded
+Job completed: multithreadedJob
+Total items processed: 1000000
+Duration: ~7 min
+Average processing rate: ~2150 records/second
+Peak heap usage: ~38 MB
+Average heap usage: ~25 MB
