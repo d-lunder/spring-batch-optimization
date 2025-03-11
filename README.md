@@ -39,3 +39,11 @@ Total items processed: 1000000
 Duration: ~30 min
 Average processing rate: ~540 records/second
 Average heap usage: ~24 MB
+
+Multithreaded
+Job completed: multithreadedJob
+Total items processed: 1000000
+Duration: ~7 min
+Average processing rate: ~2150 records/second
+Peak heap usage: ~38 MB
+Average heap usage: ~25 MB
