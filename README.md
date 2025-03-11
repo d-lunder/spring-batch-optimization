@@ -10,13 +10,13 @@ constraint pk_transactions primary key(id)
 );
 ```
 
-Script for creating 100mil of dummy transactions
+Script for creating 1 million of dummy transactions
 ```sql
 DO $$
 DECLARE
 i INT := 1;
-batch_size INT := 1000000; -- 1 million per batch
-total_records INT := 100000000; -- 100 million
+batch_size INT := 10000; -- 10 000
+total_records INT := 1000000; -- 1 000 000
 start_date DATE := '2020-01-01';
 BEGIN
 WHILE i <= total_records LOOP
@@ -28,7 +28,7 @@ CAST(random() * 1000 AS NUMERIC(10,2)) AS amount,
 now() AS created_at
 FROM generate_series(1, batch_size);
 i := i + batch_size;
-RAISE NOTICE 'Inserted % records', i;
+RAISE NOTICE 'Inserted % records', i-1;
 END LOOP;
 END $$;
 ```
