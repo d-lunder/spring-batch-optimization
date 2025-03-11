@@ -33,3 +33,9 @@ END LOOP;
 END $$;
 ```
 
+Chunk
+Job completed: transactionJob
+Total items processed: 1000000
+Duration: ~30 min
+Average processing rate: ~540 records/second
+Average heap usage: ~24 MB
