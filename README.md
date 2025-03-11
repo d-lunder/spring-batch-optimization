@@ -1,4 +1,5 @@
 Script for creating table that will hold dummy transactions
+
 ```sql
 create table transactions
 (
@@ -11,6 +12,7 @@ constraint pk_transactions primary key(id)
 ```
 
 Script for creating 100mil of dummy transactions
+
 ```sql
 DO $$
 DECLARE
